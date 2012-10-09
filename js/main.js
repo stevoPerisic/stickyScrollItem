@@ -17,11 +17,10 @@ var setSticky =function (){
 		var stickyContent = $('#stickyContent');
 		$('#Sticky').css('height', '1px');
 		stickyContent.css({
-			'opacity': .5,	
 			'position':	'fixed',
 			'top': '45px',
 			'z-index': 1000
-		}).appendTo('#header');
+		});
 		
 		offsetCurrent = $('#Sticky').offset().top;
 		stuck = true;
@@ -30,12 +29,11 @@ var setSticky =function (){
 	else if (offsetCurrent > 45 && stuck == true)
 	{	
 		$('#stickyContent').css({	
-			'opacity': 1,
 			'position': 'relative',
 			'top': 0,
 			'z-index': 0
-		}).appendTo('#Sticky');
-		$('#Sticky').css('height', '144px');
+		});
+		$('#Sticky').css('height', '180px');
 		
 		offsetCurrent = $('#Sticky').offset().top;
 		stuck = false;
@@ -55,14 +53,18 @@ function loaded() {
 		momentum: false,
 		hScrollbar: false,
 		vScrollbar: true,
-		onScrollMove: function(){	
-			setSticky();
-		}
+		useTransform:false,
+		onBeforeScrollMove: function(){ setSticky(); }
 	 });
 };
 
 function onOnline() {	
 	loaded();
+	
+	$.getJSON('https://gdata.youtube.com/feeds/api/videos?alt=json&q=tYzHhoBQq5U&v=2', function(data) {
+		 // console.log(data.feed);
+		  $('#stickyContent').html('<object width="320" height="180"><param name="movie" value="'+ data.feed.entry[0].content.src +'"></param><param name="allowFullScreen" value="false"></param><param name="allowScriptAccess" value="always"></param><embed src="'+ data.feed.entry[0].content.src +'" type="'+ data.feed.entry[0].content.type +'" allowfullscreen="false" allowScriptAccess="always" width="320" height="180"></embed></object>');
+		});
 };
 
 
