@@ -64,7 +64,12 @@ function onOnline() {
 	/*$.getJSON('https://gdata.youtube.com/feeds/api/videos?alt=json&q=tYzHhoBQq5U&v=2', function(data) {
 		  $('#stickyContent').html('<iframe width="320" height="180" src="'+ data.feed.entry[0].content.src +'" frameborder="0" allowfullscreen="0"></iframe>');
 		});*/
-	$('#stickyContent').html('<iframe width="320" height="180" src="http://www.youtube.com/embed/tYzHhoBQq5U" frameborder="0" allowfullscreen></iframe>')
+	$('#stickyContent').html('<iframe width="320" height="180" src="http://www.youtube.com/embed/tYzHhoBQq5U" frameborder="0" allowfullscreen></iframe>');
+	
+	var video = document.getElementById('video');
+	video.addEventListener('click',function(){
+  		video.play();
+	},false);
 };
 
 
