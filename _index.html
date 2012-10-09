@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <title>iScroll demo: Snap to element</title>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-<script type="text/javascript" src="iscroll.js"></script>
+<script type="text/javascript" src="_iscroll.js"></script>
 
 <script type="text/javascript">
 var myScroll;
@@ -22,6 +22,7 @@ var setSticky =function (){
 		stickyContent.css({
 			'opacity': .5,	
 			'position':	'fixed',
+			'top': '45px',
 			'z-index': 1000
 		}).appendTo('#header');
 		
@@ -142,6 +143,7 @@ body {
 	text-align:center;
 	border:1px solid #aaa;
 	background:#FFF;
+	position:absolute;
 }
 </style>
 </head>

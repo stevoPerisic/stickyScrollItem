@@ -19,6 +19,7 @@ var setSticky =function (){
 		stickyContent.css({
 			'opacity': .5,	
 			'position':	'fixed',
+			'top': '45px',
 			'z-index': 1000
 		}).appendTo('#header');
 		
