@@ -30,7 +30,10 @@ var setSticky =function (){
 	else if (offsetCurrent > 45 && stuck == true)
 	{	
 		$('#stickyContent').css({	
-			'opacity': 1
+			'opacity': 1,
+			'position': 'relative',
+			'top': 0,
+			'z-index': 0
 		}).appendTo('#Sticky');
 		$('#Sticky').css('height', '144px');
 		
