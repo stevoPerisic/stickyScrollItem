@@ -62,8 +62,7 @@ function onOnline() {
 	loaded();
 	
 	$.getJSON('https://gdata.youtube.com/feeds/api/videos?alt=json&q=tYzHhoBQq5U&v=2', function(data) {
-		 alert(data.feed);
-		  $('#stickyContent').html('<object width="320" height="180"><param name="movie" value="'+ data.feed.entry[0].content.src +'"></param><param name="allowFullScreen" value="false"></param><param name="allowScriptAccess" value="always"></param><embed src="'+ data.feed.entry[0].content.src +'" type="'+ data.feed.entry[0].content.type +'" allowfullscreen="false" allowScriptAccess="always" width="320" height="180"></embed></object>');
+		  $('#stickyContent').html('<iframe width="320" height="180" src="'+ data.feed.entry[0].content.src +'" frameborder="0" allowfullscreen="0"></iframe>');
 		});
 };
 

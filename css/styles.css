@@ -77,4 +77,8 @@ body {
 	background:#FFF;
 	position:relative;
 }
-#stickyContent>object{width:320px; height:180px;}
+#stickyContent>iframe{position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;}
