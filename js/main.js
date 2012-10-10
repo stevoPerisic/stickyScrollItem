@@ -66,12 +66,10 @@ function onOnline() {
 		});*/
 	$('#stickyContent').html('<iframe width="320" height="180" src="http://www.youtube.com/embed/tYzHhoBQq5U" frameborder="0" allowfullscreen></iframe>');
 	
-	setTimeout(function(){	
-		var video = document.getElementById('video');
-		video.addEventListener('click',function(){
-			video.play();
-		},false);
-	}, 400);
+	var video = document.getElementById('video');
+	video.addEventListener('click',function(){
+		video.play();
+	},false);
 };
 
 
