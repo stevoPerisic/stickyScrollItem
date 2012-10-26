@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
-<title>iScroll demo: Snap to element</title>
+<title>Snap to element</title>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script type="text/javascript" src="_iscroll.js"></script>
 <style type="text/css" media="all">
@@ -70,7 +70,6 @@ body {
 	height:100%;
 	padding:0;
 	margin:0;
-	border:1px solid #aaa;
 }
 
 #scroller li {
@@ -78,7 +77,8 @@ body {
 	width:100%;
 	height:44px;
 	text-align:center;
-	border:1px solid #aaa;
+	border-top:1px solid #aaa;
+	border-bottom:1px solid #aaa;
 	background:#ccc;
 }
 #scroller li#Sticky{height:180px;}
@@ -88,17 +88,20 @@ body {
 	text-align:center;
 	background:#FFF;
 	position:relative;
+	top: -12px;
+    left: 0;
 }
-#stickyContent>iframe{position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;}
+#stickyContent>iframe{
+	position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
 </style>
 </head>
 <body>
 <div id="header"><a href="http://cubiq.org/iscroll">iScroll Sticky</a></div>
-
 <div id="wrapper">
 	<div id="scroller">
 		<ul id="thelist">
@@ -146,7 +149,7 @@ function onYouTubeIframeAPIReady() {
 	videoId: 'tYzHhoBQq5U',
 	events: {
 	  'onReady': onPlayerReady,
-	  'onStateChange': onPlayerStateChange
+	 // 'onStateChange': onPlayerStateChange
 	}
   });
 }
@@ -176,7 +179,7 @@ var offsetCurrent = 0;
 var stuck = false;
 
 var setSticky =function (){
-	if (offsetCurrent <= 45)
+	if (offsetCurrent <= 45 && offsetCurrent != 0)
 	{	
 		var stickyContent = $('#stickyContent');
 		$('#Sticky').css('height', '1px');
@@ -194,7 +197,7 @@ var setSticky =function (){
 	{	
 		$('#stickyContent').css({	
 			'position': 'relative',
-			'top': 0,
+			'top': '-12px',
 			'z-index': 0
 		});
 		$('#Sticky').css('height', '180px');
@@ -222,16 +225,11 @@ function loaded() {
 	 });
 };
 
-//document.addEventListener('DOMContentLoaded', loaded, false);
+
 $(document).ready(function(){	
 	
 	loaded();
-	
-	/*$.getJSON('https://gdata.youtube.com/feeds/api/videos?alt=json&q=tYzHhoBQq5U&v=2', function(data) {
-		console.log(data);
-		  $('#stickyContent').html('<iframe class="youtube-player" type="'+ data.feed.entry[0].content.type +'" rel="'+ data.feed.entry[0].link[0].rel +'" width="320" height="180" src="'+ data.feed.entry[0].link[0].href +'" frameborder="0"></iframe>');
-		});*/
-	
+
 });
 
 </script>
